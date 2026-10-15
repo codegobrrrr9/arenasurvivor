@@ -1,0 +1,11 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  productGUID: 7f3c1a2b9d4e4f60a1b2c3d4e5f60718
+  companyName: ArenaSurvivor
+  productName: Arena Survivor
+  m_ActiveColorSpace: 1
+  activeInputHandler: 1
+  runInBackground: 1

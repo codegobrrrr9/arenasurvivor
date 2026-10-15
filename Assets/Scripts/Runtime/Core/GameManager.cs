@@ -79,6 +79,11 @@ namespace Arena
 
         public void StartRun()
         {
+            if (assets == null)
+            {
+                Debug.LogError("[Arena] Cannot start: GameAssets missing. Run Arena > Build Project.");
+                return;
+            }
             Score = 0;
             Wave = 0;
             Level = 0;
@@ -119,6 +124,7 @@ namespace Arena
 
         public void NextWave()
         {
+            if (assets == null) return;
             Wave++;
             StatsChanged?.Invoke();
             WaveStarted?.Invoke(Wave);
@@ -157,7 +163,7 @@ namespace Arena
                 PlayerPrefs.SetInt("arena.highscore", HighScore);
                 PlayerPrefs.Save();
             }
-            Audio?.Play(assets.gameOver);
+            if (assets != null) Audio?.Play(assets.gameOver);
             SetState(GameState.GameOver);
         }
 
@@ -165,6 +171,7 @@ namespace Arena
 
         public void OnEnemyKilled(EnemyDefinition def, Vector3 position)
         {
+            if (def == null || assets == null) return;
             Score += def.scoreValue;
             Audio?.Play(assets.enemyDie, 0.6f);
             StatsChanged?.Invoke();
@@ -183,6 +190,7 @@ namespace Arena
 
         public void OnPickupCollected(PickupType type, int value)
         {
+            if (assets == null || Player == null) return;
             Audio?.Play(assets.pickup, 0.6f);
             if (type == PickupType.Health)
             {
@@ -215,7 +223,7 @@ namespace Arena
                 if (Spawner != null && !Spawner.WaveInProgress) NextWave();
                 return;
             }
-            Audio?.Play(assets.upgrade, 0.7f);
+            if (assets != null) Audio?.Play(assets.upgrade, 0.7f);
             SetState(GameState.Upgrading);
         }
 

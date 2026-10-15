@@ -35,7 +35,7 @@ namespace Arena
                         _instanceToPrefab[go] = prefab;
                         return go;
                     },
-                    actionOnGet: go => go.SetActive(true),
+                    actionOnGet: null,   // activated in Get() after it has been positioned
                     actionOnRelease: go => go.SetActive(false),
                     actionOnDestroy: go => { _instanceToPrefab.Remove(go); Destroy(go); },
                     collectionCheck: false,
@@ -46,6 +46,12 @@ namespace Arena
 
             var instance = pool.Get();
             instance.transform.SetPositionAndRotation(position, rotation);
+            if (instance.TryGetComponent<Rigidbody>(out var body))
+            {
+                body.position = position;
+                body.rotation = rotation;
+            }
+            instance.SetActive(true);
             _active.Add(instance);
             foreach (var p in instance.GetComponents<IPoolable>()) p.OnSpawned();
             return instance;

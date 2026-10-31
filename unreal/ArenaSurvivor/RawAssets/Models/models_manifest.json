@@ -1,0 +1,114 @@
+{
+  "models": [
+    {
+      "name": "player",
+      "tris": 156,
+      "size_cm": [
+        72.0,
+        180.0,
+        97.5
+      ],
+      "origin": "feet",
+      "budget": 320
+    },
+    {
+      "name": "enemy_blob",
+      "tris": 68,
+      "size_cm": [
+        71.55,
+        60.0,
+        74.53
+      ],
+      "origin": "feet",
+      "budget": 200
+    },
+    {
+      "name": "enemy_spiky",
+      "tris": 168,
+      "size_cm": [
+        123.44,
+        74.0,
+        128.85
+      ],
+      "origin": "feet",
+      "budget": 400
+    },
+    {
+      "name": "enemy_tank",
+      "tris": 88,
+      "size_cm": [
+        220.0,
+        145.0,
+        185.0
+      ],
+      "origin": "feet",
+      "budget": 300
+    },
+    {
+      "name": "projectile",
+      "tris": 20,
+      "size_cm": [
+        26.83,
+        30.0,
+        66.35
+      ],
+      "origin": "center",
+      "budget": 20
+    },
+    {
+      "name": "pickup_xp",
+      "tris": 12,
+      "size_cm": [
+        34.64,
+        44.0,
+        40.0
+      ],
+      "origin": "center",
+      "budget": 24
+    },
+    {
+      "name": "pickup_health",
+      "tris": 24,
+      "size_cm": [
+        40.0,
+        40.0,
+        12.0
+      ],
+      "origin": "center",
+      "budget": 48
+    },
+    {
+      "name": "arena_floor",
+      "tris": 276,
+      "size_cm": [
+        4400.0,
+        34.0,
+        4400.0
+      ],
+      "origin": "top",
+      "budget": 320
+    },
+    {
+      "name": "pillar",
+      "tris": 52,
+      "size_cm": [
+        130.0,
+        320.5,
+        130.0
+      ],
+      "origin": "feet",
+      "budget": 60
+    },
+    {
+      "name": "crate",
+      "tris": 36,
+      "size_cm": [
+        84.0,
+        80.0,
+        84.0
+      ],
+      "origin": "feet",
+      "budget": 60
+    }
+  ]
+}

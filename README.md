@@ -57,10 +57,11 @@ Assets/
   Generated/         created by the bootstrap on your machine (scene, prefabs, materials, data, settings)
 Packages/manifest.json
 ProjectSettings/
+unreal/ArenaSurvivor/  Unreal Engine 5.6 C++ port (see its README)
 tools/
-  blender/           build_models.py (procedural models), palette.py (colours + PNG writer)
+  blender/           build_models.py (procedural models), build_models_unreal.py (UE export profile), palette.py (colours + PNG writer)
   audio/             gen_sfx.py (procedural sound effects)
-  check/             check_project.py (sanity checks that run without Unity)
+  check/             check_project.py, check_unreal.py (sanity checks that run without the engines)
 ```
 
 ## How it works
@@ -78,6 +79,10 @@ tools/
 **Rendering.** URP with one directional light, no post-processing, 2x MSAA, one `URP/Lit` material whose texture is the 16-colour palette. Each model face's UVs are collapsed onto one palette cell.
 
 **Bootstrap.** `Assets/Scripts/Editor/ProjectBootstrap.cs` runs the steps in order: folders → player settings → layers and collision matrix → URP asset → importer settings → model scale check → material → definitions and prefabs → scene → build list → save. Each step is logged as `[Arena] step N/11`. Everything it creates lives under `Assets/Generated`; **Arena → Delete Generated Assets** wipes it so you can rebuild from scratch.
+
+## Unreal Engine 5.6 version
+
+The same game is also available as an Unreal Engine 5.6 C++ project in [`unreal/ArenaSurvivor/`](unreal/ArenaSurvivor/README.md). Unity and Unreal cannot be connected to each other; what the two versions share is the source of the art and sound: the Blender scripts in `tools/blender/`, the palette and the generated `.wav` files. The Unreal project keeps its own copies under `RawAssets/` (exported with `tools/blender/build_models_unreal.py`) and imports them with an editor Python script on first launch. See its README for setup.
 
 ## Regenerating the art and sounds
 

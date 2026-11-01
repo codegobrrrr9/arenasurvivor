@@ -72,23 +72,23 @@ void UArenaWidgetBase::Click()
 void UArenaWidgetBase::Place(UWidget* Widget, UCanvasPanel* Canvas, FVector2D UnityAnchor, FVector2D UnityPosition, FVector2D Size)
 {
 	if (Widget == nullptr || Canvas == nullptr) return;
-	UCanvasPanelSlot* Slot = Canvas->AddChildToCanvas(Widget);
-	if (Slot == nullptr) return;
+	UCanvasPanelSlot* CanvasSlot = Canvas->AddChildToCanvas(Widget);
+	if (CanvasSlot == nullptr) return;
 	const FVector2D Anchor(UnityAnchor.X, 1.f - UnityAnchor.Y);
-	Slot->SetAnchors(FAnchors(Anchor.X, Anchor.Y));
-	Slot->SetAlignment(Anchor);
-	Slot->SetAutoSize(false);
-	Slot->SetPosition(FVector2D(UnityPosition.X, -UnityPosition.Y));
-	Slot->SetSize(Size);
+	CanvasSlot->SetAnchors(FAnchors(Anchor.X, Anchor.Y));
+	CanvasSlot->SetAlignment(Anchor);
+	CanvasSlot->SetAutoSize(false);
+	CanvasSlot->SetPosition(FVector2D(UnityPosition.X, -UnityPosition.Y));
+	CanvasSlot->SetSize(Size);
 }
 
 void UArenaWidgetBase::Stretch(UWidget* Widget, UCanvasPanel* Canvas)
 {
 	if (Widget == nullptr || Canvas == nullptr) return;
-	UCanvasPanelSlot* Slot = Canvas->AddChildToCanvas(Widget);
-	if (Slot == nullptr) return;
-	Slot->SetAnchors(FAnchors(0.f, 0.f, 1.f, 1.f));
-	Slot->SetOffsets(FMargin(0.f));
+	UCanvasPanelSlot* CanvasSlot = Canvas->AddChildToCanvas(Widget);
+	if (CanvasSlot == nullptr) return;
+	CanvasSlot->SetAnchors(FAnchors(0.f, 0.f, 1.f, 1.f));
+	CanvasSlot->SetOffsets(FMargin(0.f));
 }
 
 UTextBlock* UArenaWidgetBase::MakeLabel(const FString& Text, int32 Size, bool bBold, ETextJustify::Type Justify)
